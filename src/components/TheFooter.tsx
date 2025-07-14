@@ -1,22 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { social } from "@/utils/social";
 import { SocialInfo } from "@/interface/social-info";
 import TheLinkedIn from "./icons/TheLinkedIn";
 import TheInstagram from "./icons/TheInstagram";
 import TheWhatsApp from "./icons/TheWhatsApp";
 import { TheCall } from "./icons/TheCall";
-import { useTheme } from "next-themes";
-import { THEME } from "@/constants/theme";
 import TheGitHub from "./icons/TheGitHub";
 
 const TheFooter = () => {
-  const [rendered, setRendered] = useState(false);
-
-  const { theme } = useTheme();
-
   const getIconSvg = (iconName: string) => {
     switch (iconName) {
       case "linkedin":
@@ -35,10 +29,6 @@ const TheFooter = () => {
         return <TheGitHub />;
     }
   };
-
-  useEffect(() => {
-    setRendered(true);
-  }, []);
 
   return (
     <div className={` p-5 bg-black text-slate-200`}>
