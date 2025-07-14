@@ -1,6 +1,7 @@
 export const data = {
   sidebarMenu: [
     {
+      id: 1,
       title: "Getting Started",
       url: "/",
       items: [
@@ -15,6 +16,7 @@ export const data = {
       ],
     },
     {
+      id: 2,
       title: "Building Your Application",
       url: "#",
       items: [
@@ -70,6 +72,7 @@ export const data = {
       ],
     },
     {
+      id: 3,
       title: "API Reference",
       url: "#",
       items: [
@@ -100,6 +103,7 @@ export const data = {
       ],
     },
     {
+      id: 4,
       title: "Architecture",
       url: "#",
       items: [
@@ -126,6 +130,7 @@ export const data = {
       ],
     },
     {
+      id: 5,
       title: "Community",
       url: "#",
       items: [
