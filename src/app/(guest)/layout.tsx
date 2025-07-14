@@ -1,7 +1,7 @@
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "../globals.css";
 import { Metadata } from "next";
-import TheNavbar from "@/components/TheNavbar";
+import TheFooter from "@/components/TheFooter";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,7 +15,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
+      <body cz-shortcut-listen="true">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -23,6 +23,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <TheFooter />
         </ThemeProvider>
       </body>
     </html>

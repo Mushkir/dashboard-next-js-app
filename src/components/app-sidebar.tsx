@@ -1,5 +1,7 @@
+"use client";
+
 import * as React from "react";
-import { GalleryVerticalEnd, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 import { SearchForm } from "@/components/search-form";
 import {
@@ -21,149 +23,21 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { ModeToggle } from "./TheToggle";
-
-// This is sample data.
-const data = {
-  navMain: [
-    {
-      title: "Getting Started",
-      url: "#",
-      items: [
-        {
-          title: "Installation",
-          url: "#",
-        },
-        {
-          title: "Project Structure",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Building Your Application",
-      url: "#",
-      items: [
-        {
-          title: "Routing",
-          url: "#",
-        },
-        {
-          title: "Data Fetching",
-          url: "#",
-          isActive: true,
-        },
-        {
-          title: "Rendering",
-          url: "#",
-        },
-        {
-          title: "Caching",
-          url: "#",
-        },
-        {
-          title: "Styling",
-          url: "#",
-        },
-        {
-          title: "Optimizing",
-          url: "#",
-        },
-        {
-          title: "Configuring",
-          url: "#",
-        },
-        {
-          title: "Testing",
-          url: "#",
-        },
-        {
-          title: "Authentication",
-          url: "#",
-        },
-        {
-          title: "Deploying",
-          url: "#",
-        },
-        {
-          title: "Upgrading",
-          url: "#",
-        },
-        {
-          title: "Examples",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "API Reference",
-      url: "#",
-      items: [
-        {
-          title: "Components",
-          url: "#",
-        },
-        {
-          title: "File Conventions",
-          url: "#",
-        },
-        {
-          title: "Functions",
-          url: "#",
-        },
-        {
-          title: "next.config.js Options",
-          url: "#",
-        },
-        {
-          title: "CLI",
-          url: "#",
-        },
-        {
-          title: "Edge Runtime",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Architecture",
-      url: "#",
-      items: [
-        {
-          title: "Accessibility",
-          url: "#",
-        },
-        {
-          title: "Fast Refresh",
-          url: "#",
-        },
-        {
-          title: "Next.js Compiler",
-          url: "#",
-        },
-        {
-          title: "Supported Browsers",
-          url: "#",
-        },
-        {
-          title: "Turbopack",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Community",
-      url: "#",
-      items: [
-        {
-          title: "Contribution Guide",
-          url: "#",
-        },
-      ],
-    },
-  ],
-};
+import Link from "next/link";
+import TheGitHub from "./icons/TheGitHub";
+import { useTheme } from "next-themes";
+import { THEME } from "@/constants/theme";
+import { data } from "@/utils/sidebar-menu";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { theme } = useTheme();
+
+  const [rendered, setRendered] = React.useState(false);
+
+  React.useEffect(() => {
+    setRendered(true);
+  }, []);
+
   return (
     <Sidebar {...props}>
       <SidebarHeader>
@@ -186,7 +60,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarGroup>
           <SidebarMenu>
-            {data.navMain.map((item, index) => (
+            {data.sidebarMenu.map((item, index) => (
               <Collapsible
                 key={item.title}
                 defaultOpen={index === 1}
@@ -220,6 +94,28 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
               </Collapsible>
             ))}
           </SidebarMenu>
+
+          <div className="mt-5">
+            <strong>Social</strong>
+            <SidebarMenu className="mt-1">
+              <SidebarMenuItem>
+                <Link
+                  href={"https://github.com/Mushkir/dashboard-next-js-app"}
+                  target="_blank"
+                  className={`${
+                    rendered && theme == THEME.DARK
+                      ? "hover:bg-gray-800"
+                      : "hover:bg-slate-200"
+                  } flex items-center space-x-2 transition-all rounded-lg p-2`}
+                >
+                  <div className="text-xl">
+                    <TheGitHub />
+                  </div>
+                  <span className="text-sm">GitHub</span>
+                </Link>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </div>
         </SidebarGroup>
       </SidebarContent>
       <SidebarRail />
