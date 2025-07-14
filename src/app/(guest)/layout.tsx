@@ -2,6 +2,13 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import "../globals.css";
 import { Metadata } from "next";
 import TheFooter from "@/components/TheFooter";
+import {
+  SidebarInset,
+  SidebarProvider,
+  SidebarTrigger,
+} from "@/components/ui/sidebar";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@radix-ui/react-separator";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,7 +29,29 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main>{children}</main>
+          <SidebarProvider>
+            <AppSidebar />
+            <SidebarInset>
+              <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
+                <div className=" flex items-center">
+                  <SidebarTrigger className="-ml-1" />
+                  <small className=" block lg:hidden">Toggle Here</small>
+                </div>
+                <Separator
+                  orientation="vertical"
+                  className="mr-2 data-[orientation=vertical]:h-4"
+                />
+              </header>
+              <div className="flex flex-1 flex-col gap-4 p-4">
+                <div className="w-full">
+                  <main className=" flex justify-center items-center mt-56 text-3xl font-semibold">
+                    {children}
+                  </main>
+                </div>
+                {/* <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" /> */}
+              </div>
+            </SidebarInset>
+          </SidebarProvider>
           <TheFooter />
         </ThemeProvider>
       </body>

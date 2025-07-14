@@ -2,15 +2,15 @@ export const data = {
   sidebarMenu: [
     {
       title: "Getting Started",
-      url: "#",
+      url: "/",
       items: [
         {
           title: "Installation",
-          url: "#",
+          url: "/getting-start/installation",
         },
         {
           title: "Project Structure",
-          url: "#",
+          url: "/getting-start/project-structure",
         },
       ],
     },
