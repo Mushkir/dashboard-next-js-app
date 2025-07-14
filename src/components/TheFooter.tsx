@@ -41,11 +41,7 @@ const TheFooter = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed left-0 right-0 bottom-0 z-[99] p-5 ${
-        rendered && theme == THEME.DARK ? "bg-black" : "bg-slate-200"
-      }`}
-    >
+    <div className={` p-5 bg-black text-slate-200`}>
       <div className="container mx-auto text-center">
         <span className=" text-center block text-xl font-semibold">
           Designed by{" "}
