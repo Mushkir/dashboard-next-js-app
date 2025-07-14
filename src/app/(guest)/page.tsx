@@ -12,7 +12,10 @@ export default function Page() {
       <AppSidebar />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
-          <SidebarTrigger className="-ml-1" />
+          <div className=" flex items-center">
+            <SidebarTrigger className="-ml-1" />
+            <small className=" block lg:hidden">Toggle Here</small>
+          </div>
           <Separator
             orientation="vertical"
             className="mr-2 data-[orientation=vertical]:h-4"
